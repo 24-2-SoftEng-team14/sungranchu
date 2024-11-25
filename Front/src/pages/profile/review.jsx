@@ -2,11 +2,13 @@ import React from "react";
 import "./profile.css"; // 기존 profile.css 스타일 사용
 import UpperNav from "../../component/upperNav/UpperNav"; // 상단 네비게이션
 import Footer from "../../component/footer/Footer"; // 하단 푸터
+import { useNavigate } from "react-router-dom";
 
 const filledStar = "/image/filled_star.svg"; // 채워진 별 SVG 경로
 const emptyStar = "/image/empty_star.svg"; // 빈 별 SVG 경로
 
 export default function ReviewPage() {
+  const navigate = useNavigate();
   const restaurants = [
     {
       id: 1,
@@ -28,7 +30,7 @@ export default function ReviewPage() {
     },
     {
       id: 3,
-      name: "청년다방 성균관대점",
+      name: "청년다방 2",
       location: "경기도 수원시 장안구 서부로 2066",
       category: "양식, 한식",
       rating: 3.5,
@@ -37,7 +39,7 @@ export default function ReviewPage() {
     },
     {
       id: 4,
-      name: "홍콩반점 0410 강남점",
+      name: "홍콩반점 2",
       location: "서울특별시 강남구 테헤란로 123",
       category: "중식",
       rating: 4.2,
@@ -46,7 +48,7 @@ export default function ReviewPage() {
     },
     {
       id: 5,
-      name: "청년다방 성균관대점",
+      name: "청년다방 3",
       location: "경기도 수원시 장안구 서부로 2066",
       category: "양식, 한식",
       rating: 3.5,
@@ -55,8 +57,8 @@ export default function ReviewPage() {
     },
   ];
 
-  const handleReviewClick = (restaurantName) => {
-    alert(`"${restaurantName}" 리뷰 작성 페이지로 이동합니다.`);
+  const handleReviewClick = (restaurantId) => {
+    navigate(`/mypage/review/write/${restaurantId}`);
   };
 
   return (
@@ -117,7 +119,7 @@ export default function ReviewPage() {
               </div>
               <button
                 className="profile-button"
-                onClick={() => handleReviewClick(restaurant.name)}
+                onClick={() => handleReviewClick(restaurant.id)}
               >
                 리뷰 작성
               </button>
