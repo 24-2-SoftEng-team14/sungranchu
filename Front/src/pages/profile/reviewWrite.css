@@ -77,3 +77,7 @@
 .submit-button:hover {
   background-color: #218838;
 }
+
+.review-textarea {
+  line-height: 1.5;
+}
